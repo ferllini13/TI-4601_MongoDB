@@ -58,8 +58,8 @@ def movieByTittle(title):
 
 #Consultar  toda  la  información  de  las  películas  de  una  franquicia  en particular.
 def movieByFranchise(franchise):
-    movie = Movies.find_one({"franchise":franchise})
-    return movie
+    movie = Movies.find({"franchise":franchise})
+    return list(movie)
 
 
 #Consultar toda la información de las películas estrenadas en un rango de años específico.

@@ -3,6 +3,7 @@
 
 from Tkinter import *
 import ttk
+import tkMessageBox
 import os
 import api
 from api import *
@@ -14,6 +15,30 @@ window = Tk()
 window.title("Robotic Finger")
 window.geometry("500x430")
 
+
+def printmovie(data):
+	newwin = Toplevel(window)    
+	Lb1 = Listbox(newwin)
+	Lb1.insert(1,data["title"])
+	Lb1.insert(2,data["genre"])
+	Lb1.insert(3,data["director_name"])
+	Lb1.insert(4,data["franchise"])
+	Lb1.insert(5,data["country"])
+	Lb1.insert(6,data["year"])
+	Lb1.insert(7,data["duration"])
+	Lb1.insert(8,data["company"])
+	Lb1.insert(9,data["actors"])
+	Lb1.pack()
+
+
+def printComp(data):
+	newwin = Toplevel(window)    
+	Lb1 = Listbox(newwin)
+	Lb1.insert(1,data["title"])
+	Lb1.insert(2,data["genre"])
+	Lb1.insert(3,data["year"])
+	Lb1.pack()
+
 #if press touch
 def bytittle():
 	value = title.get()#get the seconds to press
@@ -21,15 +46,22 @@ def bytittle():
 	print ("################### Movie By Title ########################")
 	print(data)
 	print ("###########################################################")
+	printmovie(data)
+
+
+
 
 
 #if press press
 def byfranchise():
 	value = fran.get()#get the seconds to pres
-	data= movieByTittle(str(value))
+	data= movieByFranchise(str(value))
 	print ("################### Movie By Franchise ########################")
 	print(data)
 	print ("###############################################################")
+	for x in data:
+		printmovie(x)
+
 
 
 
@@ -41,6 +73,9 @@ def byrange():
 	print ("################### Movies in Range ########################")
 	print(data)
 	print ("############################################################")
+	for x in data:
+		printmovie(x)
+
 
 def bycompany():
 	company = comp.get()
@@ -49,6 +84,8 @@ def bycompany():
 	print ("################### Movies by Company ########################")
 	print(data)
 	print ("##############################################################")
+	for x in data:
+		printComp(x)
 
 # write the configuration file
 def companyDAta():
@@ -83,6 +120,8 @@ var2=StringVar()
 var3=StringVar()
 var4=StringVar()
 
+result=StringVar()
+
 Label(window,text="movies",fg="black",font="none 12 bold").place(x=10,y=250)
 mov=Label(window,textvariable=var1,fg="black",font="none 12 bold").place(x=200,y=250)
 
@@ -94,6 +133,8 @@ less=Label(window,textvariable=var3,fg="black",font="none 12 bold").place(x=200,
 
 Label(window,text="average duration",fg="black",font="none 12 bold").place(x=10,y=340)
 av=Label(window,textvariable=var4,fg="black",font="none 12 bold").place(x=200,y=340)
+
+
 
 
 #entry for seconds to press
