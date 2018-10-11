@@ -43,6 +43,13 @@ def cAdd(name,year,web_address):
     Companies.insert_one(data)
 
 
+def mAdd2(data):
+    Movies.insert_one(data)
+
+
+def cAdd2(data):
+    Companies.insert_one(data)
+
 
 
 #editar 
@@ -58,8 +65,8 @@ def movieByTittle(title):
 
 #Consultar  toda  la  información  de  las  películas  de  una  franquicia  en particular.
 def movieByFranchise(franchise):
-    movie = Movies.find_one({"franchise":franchise})
-    return movie
+    movie = Movies.find({"franchise":franchise})
+    return list(movie)
 
 
 #Consultar toda la información de las películas estrenadas en un rango de años específico.
@@ -90,14 +97,8 @@ def moreDuration(Company):
     return movie[0]
 
 #Consultar la  duración  promedio  de  las películas producidas por una compañía productora en particular
-def averageDuration(Company):
+def averageDuration():
     cant = Movies.aggregate([{"$group":{"_id": "$company","average": { "$avg": "$duration" }}}]) 
     return list(cant)
 
 
-def main():
-    shit = averageDuration("UK Films")
-    print (shit)
-
-
-main()
