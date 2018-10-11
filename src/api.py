@@ -90,14 +90,8 @@ def moreDuration(Company):
     return movie[0]
 
 #Consultar la  duración  promedio  de  las películas producidas por una compañía productora en particular
-def averageDuration(Company):
+def averageDuration():
     cant = Movies.aggregate([{"$group":{"_id": "$company","average": { "$avg": "$duration" }}}]) 
     return list(cant)
 
 
-def main():
-    shit = averageDuration("UK Films")
-    print (shit)
-
-
-main()
