@@ -43,6 +43,13 @@ def cAdd(name,year,web_address):
     Companies.insert_one(data)
 
 
+def mAdd2(data):
+    Movies.insert_one(data)
+
+
+def cAdd2(data):
+    Companies.insert_one(data)
+
 
 
 #editar 

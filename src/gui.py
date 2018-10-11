@@ -13,7 +13,7 @@ from api import *
 
 window = Tk()
 window.title("Robotic Finger")
-window.geometry("500x430")
+window.geometry("700x430")
 
 
 def printmovie(data):
@@ -113,6 +113,13 @@ def companyDAta():
 	
 
 
+def addmov():
+	data= addM.get()
+	mAdd2(data)
+def addcom():
+	data= addC.get()
+	cAdd2(data)
+
 
 
 var1=StringVar()
@@ -153,6 +160,19 @@ year2.place(x=320,y=150)
 
 comp=Entry(window,width=10, bg="black",font="none 12 bold")
 comp.place(x=250,y=200)
+
+
+Label(window,text="Add Movie",fg="black",font="none 12 bold").place(x=400,y=10)
+addM=Entry(window,width=25, bg="black",font="none 12 bold")
+addM.place(x=400,y=40)
+Button(window, text ="ADD",command = addmov, height = 2, width = 20).place(x=400,y=70)
+
+
+Label(window,text="Add Company",fg="black",font="none 12 bold").place(x=400,y=210)
+addC=Entry(window,width=25, bg="black",font="none 12 bold")
+addC.place(x=400,y=250)
+Button(window, text ="ADD",command = addcom, height = 2, width = 20).place(x=400,y=280)
+
 
 # deifne the buttons
 Button(window, text ="movie by tittle",command = bytittle, height = 2, width = 20).place(x=10,y=50)
